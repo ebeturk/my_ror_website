@@ -1,0 +1,62 @@
+<div class="container mt-5">
+  <h1><%= @article.title %></h1>
+  <p><strong>Category:</strong> <%= @article.category.humanize %></p>
+  <p><strong>Published on:</strong> <%= @article.publication_date.strftime("%d %b %Y") %></p>
+  <hr>
+
+  <div class="mt-4 mb-4">
+    <h5>Summary:</h5>
+    <p><%= @article.summary %></p>
+  </div>
+
+  <div class="article-content">
+    <%= simple_format(@article.content) %> <!-- simple_format helps to maintain paragraphs -->
+  </div>
+
+<div data-controller="like" data-liked="<%= current_user_liked?(@article) %>">
+  <span data-like-target="count"><%= @article.likes.count %></span> 💗
+  <button
+    data-action="click->like#toggleLike"
+    data-id="<%= @article.id %>"
+    data-type="Article"
+    data-like-id="<%= current_user_like(@article)&.id %>"
+    data-like-target="like">
+    <%= current_user_liked?(@article) ? "Unlike" : "Like" %>
+</button>
+</div>
+
+
+  <!-- Back link to articles index -->
+  <div class="mt-5">
+    <%= link_to 'Back to All Writings', articles_path, class: 'btn btn-secondary' %>
+  </div>
+
+  <h3>Comments</h3>
+<%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
+  <div class="form-group">
+    <%= form.text_area :content, placeholder: "Add a comment...", class: "form-control" %>
+  </div>
+  <%= form.submit "Post Comment", class: "btn btn-primary" %>
+<% end %>
+
+<% @comments.select(&:persisted?).each do |comment| %>
+  <li>
+    <%= comment.content %>
+    <div data-controller="like" data-liked="<%= current_user_liked?(comment) %>">
+      <span data-like-target="count"><%= comment.likes.count %></span> 💗
+      <button
+        data-action="click->like#toggleLike"
+        data-id="<%= comment.id %>"
+        data-like-id="<%= current_user_like(comment)&.id %>"
+        data-type="Comment"
+        data-like-target="like">
+          <%= current_user_liked?(comment) ? "Unlike" : "Like" %>
+      </button>
+    </div>
+    <%= link_to "Delete", comment_path(comment), data: { turbo_method: :delete } %>
+  </li>
+<% end %>
+
+
+
+</div>

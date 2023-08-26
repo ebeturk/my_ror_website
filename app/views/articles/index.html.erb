@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Writings</h1>
+
+  <div class="row">
+    <% @articles.each do |article| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title"><%= article.title %></h5>
+            <p class="card-text"><%= truncate(article.summary, length: 100) %></p> <!-- Truncate ensures the summary isn't too long for the card -->
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Published on: <%= article.publication_date.strftime("%d %b %Y") %></small> <!-- Formatting the date -->
+            <br>
+            <%= link_to 'Read More', article_path(article), class: 'btn btn-primary mt-2' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

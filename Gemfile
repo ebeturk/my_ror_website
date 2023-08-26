@@ -80,3 +80,7 @@ end
 #Here is the gem for Devise
 gem "devise"
 
+#faker to fake some content to test
+gem "faker"
+
+
