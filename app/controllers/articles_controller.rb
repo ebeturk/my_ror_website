@@ -1,14 +1,14 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   def index
+    @articles = Article.all
+
     if params[:category].present? && Article.categories.keys.include?(params[:category])
-      @articles = @articles.where(category: params[:category])
+      @articles = Article.send(params[:category])
     end
 
     if params[:query].present?
       @articles = Article.search_by_title_and_content_and_summary(params[:query])
-    else
-      @articles = Article.all # Or however you'd normally fetch articles
     end
 
     @articles = @articles.order(created_at: :desc)
@@ -53,6 +53,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :content)
+    params.require(:article).permit(:title, :content, :category)
   end
 end
