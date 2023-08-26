@@ -13,9 +13,14 @@
   <body>
     <div class="page-container">
       <div class="navbar-container"><%= render "shared/navbar" %></div>
-      <div class="content-container">
-        <%= render "shared/flashes" %>
-        <%= yield %>
+      <div class="content-area"> <!-- A new class to wrap both the side panel and the main content -->
+        <div class="side-panel-container">
+          <%= render 'shared/side_panel' %>
+        </div>
+        <div class="content-container">
+          <%= render "shared/flashes" %>
+          <%= yield %>
+        </div>
       </div>
       <div class="footer-container"><%= render "shared/footer" %></div>
     </div>

@@ -1,6 +1,33 @@
 <div class="container mt-5">
   <h1 class="mb-4">Writings</h1>
 
+  <%# pg-search bar %>
+  <div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: articles_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<%= render "category_filter" %>
+
+<div class="categories list-category">
+  <h4>Filter by Category</h4>
+  <ul>
+    <% Article.categories.each do |category_name, category_id| %>
+      <li>
+        <%= link_to category_name.humanize, articles_path(category: category_name), class: (params[:category] == category_name ? "active" : "") %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
   <div class="row">
     <% @articles.each do |article| %>
       <div class="col-md-4 mb-4">

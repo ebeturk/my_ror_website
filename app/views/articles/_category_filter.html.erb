@@ -1,0 +1,10 @@
+<div class="d-inline-block">
+  <%= link_to "All", articles_path, class: "btn #{'btn-primary' unless params[:category]} btn-outline-secondary" %>
+</div>
+
+<% Article.categories.each do |category_name, category_value| %>
+  <div class="d-inline-block mx-2">
+    <%= link_to category_name.capitalize, articles_path(category: category_name),
+                class: "btn #{'btn-primary' if params[:category] == category_name} btn-outline-secondary" %>
+  </div>
+<% end %>

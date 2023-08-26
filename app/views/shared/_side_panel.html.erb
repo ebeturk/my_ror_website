@@ -1,0 +1,66 @@
+<div class="side-panel">
+  <h3>Navigation</h3>
+  <ul class="main-menu list-unstyled">
+
+    <li class="menu-item">
+      <div class="menu-heading d-flex justify-content-between align-items-center">
+        <%= link_to "Writings", articles_path, class: 'menu-link' %>
+        <i class="fa fa-chevron-down" data-bs-toggle="collapse" href="#writingsSubmenu"></i>
+      </div>
+      <ul id="writingsSubmenu" class="collapse submenu list-unstyled">
+        <% Article.categories.keys.each do |category| %>
+          <li class="submenu-item">
+            <%= link_to category.capitalize, articles_path(category: category) %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+
+    <li class="menu-item">
+      <div class="menu-heading d-flex justify-content-between align-items-center">
+        <%= link_to "Music", root_path, class: 'menu-link'%>
+        <i class="fa fa-chevron-down" data-bs-toggle="collapse" href="#musicSubmenu"></i>
+      </div>
+      <ul id="musicSubmenu" class="collapse submenu list-unstyled">
+        <li class="submenu-item"><%= link_to "Songs", '#' %></li>
+        <li class="submenu-item"><%= link_to "Snippets", '#' %></li>
+      </ul>
+    </li>
+
+    <li class="menu-item">
+      <div class="menu-heading d-flex justify-content-between align-items-center">
+        <%= link_to "Coding", articles_path, class: 'menu-link' %>
+        <i class="fa fa-chevron-down" data-bs-toggle="collapse" href="#codingSubmenu"></i>
+      </div>
+      <ul id="codingSubmenu" class="collapse submenu list-unstyled">
+        <li class="submenu-item"><%= link_to "Lectures", '#' %></li>
+        <li class="submenu-item"><%= link_to "Repos & Works", '#' %></li>
+      </ul>
+    </li>
+
+    <li class="menu-item">
+      <div class="menu-heading d-flex justify-content-between align-items-center">
+        <%= link_to "Profile", profile_path, class: 'menu-link'%>
+        <i class="fa fa-chevron-down" data-bs-toggle="collapse" href="#profileSubmenu"></i>
+      </div>
+      <ul id="profileSubmenu" class="collapse submenu list-unstyled text-center">
+        <li class="submenu-item">
+          <%= link_to '#' do %>
+            <i class="fa-brands fa-github fa-2x"></i>
+          <% end %>
+        </li>
+        <li class="submenu-item">
+          <%= link_to '#' do %>
+            <i class="fa-brands fa-twitter fa-2x"></i>
+          <% end %>
+        </li>
+        <li class="submenu-item">
+          <%= link_to '#' do %>
+            <i class="fa-brands fa-instagram fa-2x"></i>
+          <% end %>
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+</div>

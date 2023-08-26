@@ -1,0 +1,42 @@
+.categories {
+  margin-bottom: 20px;
+}
+
+.categories h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.categories ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.categories li {
+  margin-bottom: 5px;
+}
+
+.categories a {
+  color: #333;
+  text-decoration: none;
+}
+
+.categories a:hover {
+  text-decoration: underline;
+}
+
+.categories a.active {
+  font-weight: bold;
+}
+
+
+/* Add this to your articles.scss or a relevant SCSS file */
+.btn-outline-secondary {
+  border-color: #007bff;
+  color: #007bff;
+
+  &:hover {
+      background-color: #007bff;
+      color: white;
+  }
+}

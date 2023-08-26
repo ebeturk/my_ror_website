@@ -83,4 +83,5 @@ gem "devise"
 #faker to fake some content to test
 gem "faker"
 
-
+#pg-search for writings
+gem "pg_search"
