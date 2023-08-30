@@ -85,3 +85,6 @@ gem "faker"
 
 #pg-search for writings
 gem "pg_search"
+
+#cloudinary for images, documents, and audio
+gem 'cloudinary'

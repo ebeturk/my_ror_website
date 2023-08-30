@@ -1,0 +1,60 @@
+<div class="container">
+
+  <!-- Songs Section -->
+  <section id="songs">
+    <h2 class="mt-4">Songs</h2>
+    <% @songs.each do |music| %>
+      <div class="music-item">
+        <h3><%= music.title %></h3>
+        <p><%= music.description %></p>
+        <%= music.artist.present? ? "Artist: #{music.artist}" : "Artist: Emre" %>
+        <%= link_to 'Lyrics', "#", class: 'btn btn-secondary btn-sm', data: { bs_toggle: "collapse", bs_target: "#lyrics-#{music.id}" } %>
+        <div id="lyrics-<%= music.id %>" class="collapse">
+          <p><%= music.lyrics %></p>
+        </div>
+        <% if music.url.present? %>
+          <p>Listen on: <%= link_to music.url, music.url, target: "_blank" %></p>
+          <audio controls>
+            <source src="<%= music.url %>" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
+          <video id="player" playsinline controls>
+            <source src="<%music.url%>" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+
+        <% end %>
+        <p>Release Date: <%= music.release_date %></p>
+        <!-- Add other attributes as needed -->
+      </div>
+    <% end %>
+  </section>
+
+<br>
+  <!-- Snippets Section -->
+  <section id="snippets">
+  <br>
+    <h2 class="mt-4">Snippets</h2>
+    <% @snippets.each do |music| %>
+      <div class="music-item">
+        <h3><%= music.title %></h3>
+        <p><%= music.description %></p>
+        <%= music.artist.present? ? "Artist: #{music.artist}" : "Artist: Emre" %>
+        <%= link_to 'Lyrics', "#", class: 'btn btn-secondary btn-sm', data: { bs_toggle: "collapse", bs_target: "#lyrics-#{music.id}" } %>
+        <div id="lyrics-<%= music.id %>" class="collapse">
+          <p><%= music.lyrics %></p>
+        </div>
+        <% if music.url.present? %>
+          <p>Listen on: <%= link_to music.url, music.url, target: "_blank" %></p>
+          <audio controls>
+            <source src="<%= music.url %>" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
+
+        <% end %>
+        <p>Release Date: <%= music.release_date %></p>
+      </div>
+    <% end %>
+  </section>
+
+</div>

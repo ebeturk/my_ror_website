@@ -7,13 +7,14 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css">
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <div class="page-container">
       <div class="navbar-container"><%= render "shared/navbar" %></div>
-      <div class="content-area"> <!-- A new class to wrap both the side panel and the main content -->
+      <div class="content-area">
         <div class="side-panel-container">
           <%= render 'shared/side_panel' %>
         </div>

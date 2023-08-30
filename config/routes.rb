@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get 'profile', to: 'pages#profile', as: 'profile'
 
+  resources :musics, except: [:show]
   resources :articles do
     resources :comments, only: [:create, :destroy], shallow: true do
       resources :likes, only: [:create, :destroy]

@@ -41,7 +41,14 @@
 
 <% @comments.select(&:persisted?).each do |comment| %>
   <li>
-    <%= comment.content %>
+    <div data-controller="see-more" data-see-more-truncated-length="100">
+      <div data-see-more-target="content" class="comment-text">
+        <%= comment.content %>
+      </div>
+      <% if comment.content.length > 100 %>
+        <span data-action="click->see-more#toggle" data-see-more-target="toggleButton">... see more</span>
+      <% end %>
+    </div>
     <div data-controller="like" data-liked="<%= current_user_liked?(comment) %>">
       <span data-like-target="count"><%= comment.likes.count %></span> 💗
       <button

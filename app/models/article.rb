@@ -8,6 +8,6 @@ class Article < ApplicationRecord
                   against: { title: 'A', content: 'C', summary: 'B' },
                   using: {
                     tsearch: { prefix: true, dictionary: "english" },
-                    trigram: { threshold: 0.1 }
+                    trigram: { threshold: 0.2 }
                   }
 end
