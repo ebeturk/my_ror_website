@@ -10,32 +10,55 @@
             class: "form-control",
             placeholder: "Type a keyword"
         %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= submit_tag "Search", name: "", class: "btn btn-category" %>
     <% end %>
   </div>
 </div>
 
 <%= render "category_filter" %>
 
+<% if @articles.any? %>
+  <div class="row my-3">
 
-  <div class="row my-5">
-    <% @articles.each do |article| %>
-      <div class="col-md-4 mb-4">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title"><%= article.title %></h5>
-            <p class="card-text"><%= truncate(article.summary, length: 100) %></p> <!-- Truncate ensures the summary isn't too long for the card -->
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Published on: <%= article.publication_date.strftime("%d %b %Y") %></small> <!-- Formatting the date -->
-            <br>
-            <%= link_to 'Read More', article_path(article), class: 'btn btn-primary mt-2' %>
-          </div>
+    <div class="col-md-4 my-2">
+      <div class="card h-100">
+        <div class="card-body d-flex flex-column justify-content-center my-2">
+          <h5 class="card-title"><%= @articles.first.title %></h5>
+          <p class="card-text"><%= truncate(@articles.first.summary, length: 100) %></p> <!-- Truncate ensures the summary isn't too long for the card -->
+
+          <%= image_tag asset_path("essay_image.png"), class: "img-article" %>
+
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Published on: <%= @articles.first.publication_date.strftime("%d %b %Y") %></small> <!-- Formatting the date -->
+          <br>
+          <%= link_to 'Read More', article_path(@articles.first), class: 'btn btn-category mt-2' %>
         </div>
       </div>
-    <% end %>
+    </div>
+
+
+      <div class="col-md-8 my-2">
+        <div class="row my-3 justify-content-between">
+          <% @articles[1..-1].each do |article| %>
+            <div class="col-md-4 mb-2">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h5 class="card-title"><%= article.title %></h5>
+                  <p class="card-text"><%= truncate(article.summary, length: 100) %></p> <!-- Truncate ensures the summary isn't too long for the card -->
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">Published on: <%= article.publication_date.strftime("%d %b %Y") %></small> <!-- Formatting the date -->
+                  <br>
+                  <%= link_to 'Read More', article_path(article), class: 'btn btn-category mt-2' %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
   </div>
-</div>
+<% end %>
 
 <div class="categories list-category">
   <h4 class="text-center my-3 bg-info bg-gradient bg-opacity-75 p-3">Filter by Category</h4>

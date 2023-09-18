@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   def index
     @articles = Article.all
-
+    
     if params[:category].present? && Article.categories.keys.include?(params[:category])
       @articles = Article.send(params[:category])
     end
@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
       @articles = Article.search_by_title_and_content_and_summary(params[:query])
     end
 
-    @articles = @articles.order(created_at: :desc)
+    @articles = @articles.order(publication_date: :desc) || @articles.order(created_at: :desc)
   end
 
   def show

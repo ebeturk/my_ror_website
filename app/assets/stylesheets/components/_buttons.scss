@@ -1,0 +1,29 @@
+
+
+.btn-outline-category {
+  background-color: $light-text;
+  color: $background;
+  border-color: $background;
+  box-shadow: 4px 4px 4px gray;
+  margin: 1vh 0;
+}
+
+.btn-outline-category:hover {
+  background-color: #12865f;
+  color: white;
+}
+
+.btn-category {
+  background-color: $accent;
+  color: $light-text;
+}
+
+.btn-category:hover {
+  background-color: rgb(241, 206, 67);
+  color: #2c453c
+}
+
+.like-button {
+  background-color: $background;
+  border: none;
+}

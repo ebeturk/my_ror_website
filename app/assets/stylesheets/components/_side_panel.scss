@@ -46,7 +46,7 @@ h3 {
 
 .menu-heading {
   background-color: rgb(230, 230, 230);
-  color: black;
+  color: $light-text;
   padding: 5px 10px;
   border-radius: 5px;
   margin-bottom: 5px; /* Spacing between menu heading and submenu */
@@ -54,7 +54,7 @@ h3 {
 
 .menu-link {
   text-decoration: none;
-  color: #333;
+  color: $light-text;
 }
 
 .menu-link:hover {

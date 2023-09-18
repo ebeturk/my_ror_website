@@ -47,11 +47,11 @@ export default class extends Controller {
     .then(data => {
       if (data.liked) {
         this.data.set("liked", "true");
-        this.likeTarget.textContent = "Unlike";
+        this.likeTarget.textContent = "💗";
         this.likeTarget.setAttribute('data-like-id', data.like_id);
       } else {
         this.data.set("liked", "false");
-        this.likeTarget.textContent = "Like";
+        this.likeTarget.textContent = "❤️";
         this.likeTarget.removeAttribute('data-like-id');
       }
       this.countTarget.textContent = data.like_count; // Update the like count on the page

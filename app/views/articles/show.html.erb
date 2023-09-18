@@ -14,14 +14,15 @@
   </div>
 
 <div data-controller="like" data-liked="<%= current_user_liked?(@article) %>">
-  <span data-like-target="count"><%= @article.likes.count %></span> 💗
+  <span data-like-target="count"><%= @article.likes.count %></span>
   <button
+    class = "like-button"
     data-action="click->like#toggleLike"
     data-id="<%= @article.id %>"
     data-type="Article"
     data-like-id="<%= current_user_like(@article)&.id %>"
     data-like-target="like">
-    <%= current_user_liked?(@article) ? "Unlike" : "Like" %>
+    <%= current_user_liked?(@article) ? "💗" : "♥️" %>
 </button>
 </div>
 
@@ -36,7 +37,7 @@
   <div class="form-group">
     <%= form.text_area :content, placeholder: "Add a comment...", class: "form-control" %>
   </div>
-  <%= form.submit "Post Comment", class: "btn btn-primary" %>
+  <%= form.submit "Post Comment", class: "btn btn-category" %>
 <% end %>
 
 <% @comments.select(&:persisted?).each do |comment| %>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'profile', to: 'pages#profile', as: 'profile'
 
   resources :musics, except: [:show]
+  resources :lectures
   resources :articles do
     resources :comments, only: [:create, :destroy], shallow: true do
       resources :likes, only: [:create, :destroy]

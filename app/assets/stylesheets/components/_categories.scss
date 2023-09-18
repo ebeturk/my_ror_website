@@ -5,6 +5,7 @@
 .categories h4 {
   font-size: 20px;
   margin-bottom: 10px;
+  background-color: $accent !important;
 }
 
 .categories ul {
@@ -31,7 +32,7 @@
 
 
 /* Add this to your articles.scss or a relevant SCSS file */
-.btn-outline-secondary {
+.btn-outline-category {
   border-color: #007bff;
   color: #007bff;
 
@@ -39,4 +40,10 @@
       background-color: #007bff;
       color: white;
   }
+}
+
+.categories-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
